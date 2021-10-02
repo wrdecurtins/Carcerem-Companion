@@ -2,26 +2,20 @@
   "name": "carcerem-companion",
   "version": "0.1.0",
   "private": true,
-  "watch" : {
-    "build": {
-      "extensions": "ts,html,vue,js"
-    },
-    "serve": {
-      "extensions": "ts,html,vue,js"
-    }
-  },
   "scripts": {
-    "watch": "vue-cli-service build --mode develepment; vue-cli-service serve;",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --mode develepment",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "watch": "vue-cli-service build --mode develepment; vue-cli-service serve;"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.4.4",
     "core-js": "^3.6.5",
     "npm-watch": "^0.11.0",
     "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",
-    "vue-router": "^3.2.0"
+    "vue-router": "^3.2.0",
+    "vuetify": "^2.4.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.18.0",
@@ -41,6 +35,15 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-vue": "^6.2.2",
     "typescript": "~4.1.5",
+    "vue-cli-plugin-vuetify": "~2.4.2",
     "vue-template-compiler": "^2.6.11"
+  },
+  "watch": {
+    "build": {
+      "extensions": "ts,html,vue,js"
+    },
+    "serve": {
+      "extensions": "ts,html,vue,js"
+    }
   }
 }
