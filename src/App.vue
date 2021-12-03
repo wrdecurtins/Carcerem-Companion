@@ -1,19 +1,12 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <h2>ADD SOMETHING AND SAVE</h2>
-      <router-link to="/">
-        Home
-      </router-link> |
-      <router-link to="/about">
-        About
-      </router-link> |
-      <router-link to="/test">
-        Test
-      </router-link>
+  <v-app>
+    <div id="app">
+      <div id="nav">
+        <h2>Welcome to Carcerem Companion</h2>
+      </div>
+      <router-view />
     </div>
-    <router-view />
-  </div>
+  </v-app>
 </template>
 <style>
 #app {

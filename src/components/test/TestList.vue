@@ -2,6 +2,7 @@
   <div>
     <v-simple-table>
       <thead>
+        <th>Action</th>
         <th>Title</th>
         <th>Description</th>
         <th>Published</th>
@@ -13,6 +14,15 @@
           v-for="test in tests"
           :key="test.id"
         >
+          <td>
+            <v-btn
+              color="primary"
+              elevation="2"
+              @click="deleteItem(test.id)"
+            >
+              delete
+            </v-btn>
+          </td>
           <td>{{ test.title }}</td>
           <td>{{ test.description }}</td>
           <td>{{ test.published }}</td>
@@ -21,48 +31,36 @@
         </tr>
       </tbody>
     </v-simple-table>
-    <div class="submit-form">
-      <div v-if="!submitted">
-        <div class="form-group">
-          <label for="title">Title</label>
-          <input
-            id="title"
-            v-model="test.title"
-            type="text"
-            class="form-control"
-            required
-            name="title"
-          >
-        </div>
-        <div class="form-group">
-          <label for="description">description</label>
-          <input
-            id="description"
-            v-model="test.description"
-            class="form-control"
-            required
-            name="description"
-          >
-        </div>
-        <button
-          class="btn btn-success"
-          @click="saveTest"
-        >
-          Submit
-        </button>
-      </div>
-      <div v-else>
-        <h4>You submitted successfully!</h4>
-        <button
-          class="btn btn-success"
-          @click="newTest"
-        >
-          Add
-        </button>
-        <v-btn
-          elevation="2"
-        />
-      </div>
+
+    <div v-if="!submitted">
+      <v-text-field
+        v-model="submitTest.title"
+        class="w-50 mx-auto"
+        label="Title"
+        required
+      />
+      <v-text-field
+        v-model="submitTest.description"
+        class="w-50 mx-auto"
+        label="Description"
+        required
+      />
+      <v-btn
+        color="primary"
+        @click="saveTest"
+      >
+        Submit
+      </v-btn>
+    </div>
+    <div v-else>
+      <h4>You submitted successfully!</h4>
+      <v-btn
+        elevation="2"
+        color="primary"
+        @click="newTest"
+      >
+        Add
+      </v-btn>
     </div>
   </div>
 </template>
@@ -73,7 +71,7 @@ export default {
     name: 'TestList',
     data() {
         return {
-            test: {
+            submitTest: {
                 id: null,
                 title: '',
                 description: '',
@@ -89,13 +87,13 @@ export default {
     methods: {
         async saveTest() {
             var data = {
-                title: this.test.title,
-                description: this.test.description
+                title: this.submitTest.title,
+                description: this.submitTest.description
             };
 
             await TestEnds.create(data)
                 .then(response => {
-                    this.test.id = response.data.id;
+                    this.submitTest.id = response.data.id;
                     console.log(response.data.id);
                     this.submitted = true;
                 })
@@ -106,18 +104,24 @@ export default {
         },
         newTest() {
             this.submitted = false;
-            this.test = {};
+            this.submitTest = {};
         },
         async useTestList() {
             await TestEnds.getAll()
                 .then(res => {
                     this.tests = res.data;
                 });
+        },
+        deleteItem(id) {
+            TestEnds.delete(id)
+                .then(res => {
+                    this.useTestList();
+                });
         }
     }
 };
 </script>
-<style>
+<style scoped>
 .submit-form {
     max-width: 330px;
     margin: auto;
