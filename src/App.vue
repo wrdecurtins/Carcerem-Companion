@@ -1,13 +1,25 @@
 <template>
   <v-app>
     <div id="app">
-      <div id="nav">
-        <h2>Welcome to Carcerem Companion</h2>
-      </div>
+      <Toolbar />
       <router-view />
+      <Navbar />
     </div>
   </v-app>
 </template>
+<script>
+import {
+  Navbar,
+  Toolbar
+} from '@/components';
+export default {
+  name: 'App',
+  components: {
+    Navbar,
+    Toolbar
+  }
+};
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -15,18 +27,5 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>
