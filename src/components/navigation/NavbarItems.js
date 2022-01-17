@@ -1,12 +1,5 @@
 export const NavbarItems = [
   {
-    key: 'home',
-    route: {
-      name: 'Home'
-    },
-    icon: 'mdi-menu'
-  },
-  {
     key: 'stats',
     route: {
       name: 'Stats'

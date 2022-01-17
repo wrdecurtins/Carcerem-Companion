@@ -19,14 +19,16 @@ module.exports = {
     'semi' : ['error', 'always'],
     'quotes' : ['warn', 'single'],
     'space-before-function-paren' : ['warn', 'never'],
-    "@typescript-eslint/explicit-function-return-type": "off"
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   },
-  "overrides": [
-    {
-      "files": [".vue"],
-      "rules": {
-        "@typescript-eslint/explicit-function-return-type": ["warn"]
-      }
-    }
-  ]
+  // "overrides": [
+  //   {
+  //     "files": ["*.ts","*.js","*.vue"],
+  //     "rules": {
+  //       "@typescript-eslint/explicit-function-return-type": ["warn"],
+  //       "@typescript-eslint/explicit-module-boundary-types": ["error"]
+  //     }
+  //   }
+  // ]
 }

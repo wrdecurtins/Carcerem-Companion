@@ -5,7 +5,7 @@
       fixed
     >
       <div
-        v-for="item in NavbarItems"
+        v-for="item in navbarItems"
         :key="item.key"
       >
         <v-btn :to="item.route">
@@ -18,19 +18,10 @@
   </div>
 </template>
 <script lang="js">
-import { NavbarItems } from '@/components/navigation/NavbarItems';
 export default {
   name: 'Navbar',
-  data() {
-    return {
-      NavbarItems
-    };
-  },
-  methods: {
-    navigate(args) {
-      console.log(args);
-      console.log(this.nav_select);
-    }
+  props: {
+    navbarItems: { type: Array, required: false, default: () => [] }
   }
 };
 </script>

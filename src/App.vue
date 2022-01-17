@@ -3,19 +3,16 @@
     <div id="app">
       <Toolbar />
       <router-view />
-      <Navbar />
     </div>
   </v-app>
 </template>
 <script>
 import {
-  Navbar,
   Toolbar
 } from '@/components';
 export default {
   name: 'App',
   components: {
-    Navbar,
     Toolbar
   }
 };
