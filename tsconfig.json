@@ -16,10 +16,10 @@
     ],
     "paths": {
       "@/*": [
-        "src/*"
+        "./src/*"
       ],
       "@ends/*":[
-        "src/endpoints/*"
+        "./src/endpoints/*"
       ]
     },
     "lib": [
