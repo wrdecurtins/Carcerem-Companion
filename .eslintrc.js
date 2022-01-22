@@ -20,7 +20,8 @@ module.exports = {
     'quotes' : ['warn', 'single'],
     'space-before-function-paren' : ['warn', 'never'],
     "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off"
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    'curly': ["error", "multi"]
   },
   // "overrides": [
   //   {

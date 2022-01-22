@@ -3,13 +3,14 @@
     <h2>Global Spells</h2>
     <Table
       :headers="spellHeaders"
-      :items="spells"
+      :get-items="getSpells"
+      :cell-templates="spellCellTemplates"
     />
   </div>
 </template>
 <script>
 import { SpellApi } from '@/endpoints';
-import { spellHeaders } from '@/components/spells';
+import { spellHeaders, spellCellTemplates } from '@/components/spells';
 import { Table } from '@/components';
 export default {
   name: 'GlobalSpellList',
@@ -20,17 +21,14 @@ export default {
     return {
       SpellApi,
       spellHeaders: spellHeaders ?? [],
+      spellCellTemplates: spellCellTemplates ?? [],
       spells: []
     };
   },
-  mounted() {
-    this.getSpells();
-  },
   methods: {
-    getSpells() {
-      this.SpellApi.getAll().then((res) => {
-        this.spells = res?.data;
-      });
+    async getSpells() {
+      const { data } = await this.SpellApi.getAll();
+      return data;
     }
   }
 };
