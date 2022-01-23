@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-data-table
-      :items="tableData"
+      :items="tableData || items"
       :headers="headers"
     >
       <template

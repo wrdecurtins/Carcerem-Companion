@@ -58,8 +58,37 @@ export const spellCellTemplates = [
   {
     name: 'classes',
     display(value) {
-      return value;
+      const fromClassList = value?.fromClassList ?? [];
+      const fromSubclass = value?.fromSubclass ?? [];
+      let display = '';
+      fromClassList.forEach((cls) => {
+        display += cls?.name + ', ';
+      });
+      display = display.substring(0, display.length - 2);
+      if (fromSubclass?.length) {
+        display += ' (From Subclasses: ';
+        fromSubclass.forEach((cls) => {
+          display += cls?.subclass?.name + ' ' + cls?.class?.name + ', ';
+        });
+        display = display.substring(0, display.length - 2) + ')';
+      }
+      return display;
+    }
+  },
+  {
+    name: 'entriesHigherLevel',
+    display(value) {
+      let display = '';
+      if (value?.length)
+        value.forEach((entry) => {
+          display += entry?.name + ': ';
+          // eslint-disable-next-line
+          entry?.entries?.forEach((str) => {
+            display += str;
+          });
+        });
+
+      return display;
     }
   }
-
 ];
