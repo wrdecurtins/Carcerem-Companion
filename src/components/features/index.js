@@ -1,7 +1,7 @@
 import FeatureList from './FeatureList.vue';
 import GlobalFeats from './GlobalFeats.vue';
 
-export {
+export default {
   FeatureList,
   GlobalFeats
 };

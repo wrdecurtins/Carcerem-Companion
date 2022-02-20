@@ -39,7 +39,7 @@ export default {
     };
   },
   mounted() {
-    this.getItems().then(res => { this.tableData = res; });
+    this.getItems().then(res => { this.tableData = res?.data ?? []; });
   }
 };
 </script>

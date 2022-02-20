@@ -1,12 +1,17 @@
 <template>
   <div>
-    <h2>Global Feats</h2>
-    <Table :get-items="getFeats" />
+    <h2>Feats</h2>
+    <Table
+      :headers="featHeaders"
+      :get-items="getFeats"
+      :cell-templates="featCellTemplates"
+    />
   </div>
 </template>
 <script>
 import { Table } from '@/components/visual';
 import { FeatApi } from '@/endpoints';
+import { featHeaders, featCellTemplates } from './table';
 export default {
   name: 'GlobalFeats',
   components: {
@@ -14,13 +19,14 @@ export default {
   },
   data() {
     return {
-      FeatApi
+      FeatApi,
+      featHeaders,
+      featCellTemplates
     };
   },
   methods: {
-    async getFeats() {
-      const { data } = await this.FeatApi.getAll();
-      return data;
+    getFeats() {
+      return this.FeatApi.getAll();
     }
   }
 };

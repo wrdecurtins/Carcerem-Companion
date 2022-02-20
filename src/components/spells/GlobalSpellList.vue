@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Global Spells</h2>
+    <h2>Spells</h2>
     <Table
       :headers="spellHeaders"
       :get-items="getSpells"
@@ -21,14 +21,12 @@ export default {
     return {
       SpellApi,
       spellHeaders: spellHeaders ?? [],
-      spellCellTemplates: spellCellTemplates ?? [],
-      spells: []
+      spellCellTemplates: spellCellTemplates ?? []
     };
   },
   methods: {
-    async getSpells() {
-      const { data } = await this.SpellApi.getAll();
-      return data;
+    getSpells() {
+      return this.SpellApi.getAll();
     }
   }
 };
